@@ -1,0 +1,77 @@
+from jinja2 import Template
+
+# Define your template
+template = Template('''
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSIR-CRRI</title>
+    <style>
+        body {
+            background-color: #003151;
+            font-family: "Times New Roman", italic;
+        }
+        .container {
+            width: 500px;
+            margin: auto;
+            background-color: #BEBDB8;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .title {
+            text-align: center;
+            color: white;
+        }
+        .label {
+            color: white;
+        }
+        .button {
+            background-color: blue;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            background-color: #BEBDB8;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="C:/Users/user/Downloads/csir_logo-removebg-preview.png" alt="CSIR Logo" style="width:80px;height:60px;">
+        <h1 class="title">CSIR-CRRI</h1>
+        <label class="label">Enter first number:</label>
+        <input type="text" id="num1" class="result"><br><br>
+        <label class="label">Enter second number:</label>
+        <input type="text" id="num2" class="result"><br><br>
+        <button class="button" onclick="calculate()">Calculate</button><br><br>
+        <label class="label">Result:</label>
+        <input type="text" id="result" class="result" readonly>
+    </div>
+    <script>
+        function calculate() {
+            var num1 = parseInt(document.getElementById('num1').value);
+            var num2 = parseInt(document.getElementById('num2').value);
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Please enter valid integers");
+                return;
+            }
+            var result = num1 * num1 + num2 * num2;
+            document.getElementById('result').value = result;
+        }
+    </script>
+</body>
+</html>
+''')
+
+# Render the template
+html_code = template.render()
+print(html_code)
+
